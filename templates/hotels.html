@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}Hotels - Hotel App{% endblock %}
+
+{% block content %}
+    <h2>Available Hotels</h2>
+    <ul>
+        {% for hotel in hotels %}
+            <li>
+                <a href="{{ url_for('hotel_detail', hotel_id=hotel.id) }}">
+                    {{ hotel.name }} - {{ hotel.location }}
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}
