@@ -5,5 +5,6 @@
 {% block content %}
     <h2>Welcome to Our Hotel Booking App</h2>
     <p>Find the best hotels and book your stay easily!</p>
-    <a href="/hotels" class="btn">View Hotels</a>
+    <a href="{{ url_for('v_hotels') }}" class="btn">View Hotels</a>
+    <a href="{{ url_for('add_hotel') }}" class="btn">Add Hotel</a>
 {% endblock %}

@@ -1,10 +1,14 @@
-{% extends "base.html" %}
-
-{% block title %}Booking Confirmed{% endblock %}
-
-{% block content %}
-    <h2>Thank You, {{ name }}!</h2>
-    <p>Your booking at {{ hotel.name }} is confirmed.</p>
-    <p>Check-in: {{ checkin }}</p>
-    <p>Check-out: {{ checkout }}</p>
-{% endblock %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Booking Confirmation</title>
+</head>
+<body>
+    <h1>Booking Confirmed</h1>
+    <p>Name: {{ booking.name }}</p>
+    <p>Email: {{ booking.email }}</p>
+    <p>Check-in: {{ booking.checkin }}</p>
+    <p>Check-out: {{ booking.checkout }}</p>
+    <p>Hotel ID: {{ booking.hotel_id }}</p>
+</body>
+</html>

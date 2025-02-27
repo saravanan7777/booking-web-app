@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Admin - Hotels</title>
+</head>
+<body>
+    <h1>All Hotels (Admin)</h1>
+    <ul>
+        {% for hotel in hotels %}
+        <li>
+            {{ hotel.name }} - {{ hotel.location }} - ${{ hotel.price }}
+        </li>
+        {% endfor %}
+    </ul>
+    <a href="{{ url_for('add_hotel') }}">Add New Hotel</a>
+</body>
+</html>
