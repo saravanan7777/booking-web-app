@@ -1,11 +1,45 @@
-{% extends "base.html" %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotels</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/details.css') }}">
+</head>
+<body>
 
-{% block title %}{{ hotel.name }} - Hotel App{% endblock %}
+    <!-- Navbar -->
+    
+    <nav style="display: flex; justify-content: space-between; align-items: center; padding: 15px 30px; background: #412212;; color: white;">
+        <div style="font-size: 22px; font-weight: bold; font-family: 'Poppins', sans-serif;">HorizonStay</div>
+        <ul style="list-style: none; padding: 0; margin: 0; display: flex;">
+            <li style="margin: 0 15px;"><a href="{{ url_for('hotels.view_hotels') }}" style="text-decoration: none; color: white; font-size: 16px; font-weight: 500; transition: 0.3s;">Home</a></li>
+            <li style="margin: 0 15px;"><a href="{{ url_for('hotels.vhotels') }}" style="text-decoration: none; color: white; font-size: 16px; font-weight: 500; transition: 0.3s;">View Hotels</a></li>
+            {% if current_user.is_authenticated %}
+                <li style="margin: 0 15px;"><a href="{{ url_for('bookings.my_bookings') }}" style="text-decoration: none; color: white; font-size: 16px; font-weight: 500; transition: 0.3s;">View Bookings</a></li>
+                <li style="margin: 0 15px;"><a href="{{ url_for('auth.logout') }}" style="text-decoration: none; color: white; font-size: 16px; font-weight: 500; transition: 0.3s;">Logout</a></li>
+            {% else %}
+                <li style="margin: 0 15px;"><a href="{{ url_for('auth.login') }}" style="text-decoration: none; color: white; font-size: 16px; font-weight: 500; transition: 0.3s;">Login</a></li>
+            {% endif %}
+        </ul>
+    </nav>
 
-{% block content %}
-    <h2>{{ hotel.name }}</h2>
-    <p>Location: {{ hotel.location }}</p>
-    <p>Price: ${{ hotel.price }} per night</p>
 
-    <a href="{{ url_for('book_hotel', hotel_id=hotel.id) }}" class="btn">Book Now</a>
-{% endblock %}
+
+    <!-- Hotel List -->
+    <div class="hotel-list">
+        {% for hotel in hotels %}
+        <div class="hotel-card">
+            <img src="{{ url_for('static', filename='images/' + hotel.image) }}" alt="{{ hotel.name }}">
+            <div class="hotel-info">
+                <h3>{{ hotel.name }}</h3>
+                <p>📍 {{ hotel.location }}</p>
+                <p>💰 Price: ${{ hotel.price }} / night</p>
+                <a href="{{ url_for('bookings.book_hotel', hotel_id=hotel.id) }}" class="btn">Book Now</a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+</body>
+</html>

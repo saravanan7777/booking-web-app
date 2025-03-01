@@ -1,0 +1,118 @@
+/* General Page Styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f6f2; /* Fallback color */
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    position: relative;
+}
+
+/* Background overlay with black shade */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('../images/2.jpg') no-repeat center center/cover;
+    filter: brightness(50%); /* Darkens the background */
+    z-index: -2;
+}
+
+/* Black transparent overlay */
+
+
+/* Navbar */
+nav {
+    background-color: #5a3827;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 22px;
+    font-weight: bold;
+    color: white;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+/* Page Title */
+.page-title {
+    font-size: 28px;
+    color: #5a3827;
+    margin-top: 20px;
+}
+
+/* Hotel List */
+.hotel-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 20px;
+}
+
+/* Hotel Card */
+.hotel-card {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin: 15px;
+    width: 280px;
+    overflow: hidden;
+    text-align: left;
+}
+
+.hotel-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+.hotel-info {
+    padding: 15px;
+}
+
+.hotel-info h3 {
+    color: #5a3827;
+}
+
+.hotel-info p {
+    color: #333;
+    margin: 5px 0;
+}
+
+/* Book Now Button */
+.btn {
+    display: inline-block;
+    background-color: #5a3827;
+    color: white;
+    text-decoration: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    margin-top: 10px;
+    display: block;
+    text-align: center;
+}
+
+.btn:hover {
+    background-color: #7b4e3a;
+}

@@ -1,16 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Book Hotel</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book {{ hotel.name }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/booking.css') }}">
 </head>
+
 <body>
-    <h1>Book {{ hotel.name }}</h1>
-    <form method="POST">
-        Name: <input type="text" name="name" required><br>
-        Email: <input type="email" name="email" required><br>
-        Check-in: <input type="date" name="checkin" required><br>
-        Check-out: <input type="date" name="checkout" required><br>
-        <button type="submit">Confirm Booking</button>
-    </form>
+    
+    <div class="form-container">
+        <h2>Book Your Stay at {{ hotel.name }}</h2>
+        <form method="POST">
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="email" name="email" placeholder="Your Email" required>
+            <label>Check-in Date:</label>
+            <input type="date" name="checkin" required>
+            <label>Check-out Date:</label>
+            <input type="date" name="checkout" required>
+            <button type="submit">Confirm Booking</button>
+        </form>
+    </div>
 </body>
 </html>

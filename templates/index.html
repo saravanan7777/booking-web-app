@@ -1,10 +1,17 @@
-{% extends "base.html" %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Access Denied</title>
+</head>
+<body style="display: flex; justify-content: center; align-items: center; height: 100vh; background-color: #f8f8f8; font-family: Arial, sans-serif;">
+    
+    <div style="text-align: center; background: white; padding: 40px; border-radius: 10px; box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);">
+        <h1 style="color: #d9534f;">Access Denied</h1>
+        <p style="color: #555;">You do not have permission to access this page.</p>
+        <a href="{{ url_for('auth.login') }}" style="display: inline-block; margin-top: 20px; padding: 10px 20px; background: #412212; color: white; text-decoration: none; border-radius: 5px;">Go to Login</a>
+    </div>
 
-{% block title %}Home - Hotel App{% endblock %}
-
-{% block content %}
-    <h2>Welcome to Our Hotel Booking App</h2>
-    <p>Find the best hotels and book your stay easily!</p>
-    <a href="{{ url_for('v_hotels') }}" class="btn">View Hotels</a>
-    <a href="{{ url_for('add_hotel') }}" class="btn">Add Hotel</a>
-{% endblock %}
+</body>
+</html>

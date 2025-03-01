@@ -1,21 +1,47 @@
-{% extends "base.html" %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HorizonStay - Home</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/hotels.css') }}">
+</head>
+<body>
 
-{% block title %}Hotels - Hotel App{% endblock %}
+    <nav style="display: flex; justify-content: space-between; align-items: center; padding: 15px 30px; background: #412212;; color: white;">
+        <div style="font-size: 22px; font-weight: bold; font-family: 'Poppins', sans-serif;">HorizonStay</div>
+        <ul style="list-style: none; padding: 0; margin: 0; display: flex;">
+            <li style="margin: 0 15px;"><a href="{{ url_for('hotels.view_hotels') }}" style="text-decoration: none; color: white; font-size: 16px; font-weight: 500; transition: 0.3s;">Home</a></li>
+            <li style="margin: 0 15px;"><a href="{{ url_for('hotels.vhotels') }}" style="text-decoration: none; color: white; font-size: 16px; font-weight: 500; transition: 0.3s;">View Hotels</a></li>
+            {% if current_user.is_authenticated %}
+                <li style="margin: 0 15px;"><a href="{{ url_for('bookings.my_bookings') }}" style="text-decoration: none; color: white; font-size: 16px; font-weight: 500; transition: 0.3s;">View Bookings</a></li>
+                <li style="margin: 0 15px;"><a href="{{ url_for('auth.logout') }}" style="text-decoration: none; color: white; font-size: 16px; font-weight: 500; transition: 0.3s;">Logout</a></li>
+            {% else %}
+                <li style="margin: 0 15px;"><a href="{{ url_for('auth.login') }}" style="text-decoration: none; color: white; font-size: 16px; font-weight: 500; transition: 0.3s;">Login</a></li>
+            {% endif %}
+        </ul>
+    </nav>
 
-{% block content %}
-    <h2>Available Hotels</h2>
-    <ul>
-        {% for hotel in hotels %}
-            <li>
-                <a href="{{ url_for('hotel_detail', hotel_id=hotel.id) }}">
-                    {{ hotel.name }} - {{ hotel.location }} (${{ hotel.price }}/night)
-                </a>
-                <a href="{{ url_for('book_hotel', hotel_id=hotel.id) }}" class="btn">Book Now</a>
-                <a href="{{ url_for('edit_hotel', hotel_id=hotel.id) }}" class="btn">Edit</a>
-                <form action="{{ url_for('delete_hotel', hotel_id=hotel.id) }}" method="POST" style="display:inline;">
-                    <button type="submit" class="btn">Delete</button>
-                </form>
-            </li>
-        {% endfor %}
-    </ul>
-{% endblock %}
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="hero-content">
+            <h1>Luxury Stays, Memorable Experiences</h1>
+            <p>Find your perfect stay with HorizonStay – where comfort meets elegance.</p>
+        </div>
+    </header>
+  <!-- Footer Section -->
+<section class="footer">
+    <div class="footer-container">
+        <h2>Contact Us</h2>
+        <p>For bookings and inquiries, reach out to us:</p>
+        <div class="footer-info">
+            <p><i class="fas fa-map-marker-alt"></i> 123 Luxury Street, Dream City</p>
+            <p><i class="fas fa-phone"></i> +1 234 567 890</p>
+            <p><i class="fas fa-envelope"></i> saravanan2003cr7@gmail.com</p>
+        </div>
+    </div>
+</section>
+
+    
+</body>
+</html>

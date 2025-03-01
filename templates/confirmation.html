@@ -1,14 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Booking Confirmation</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Bookings</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/booked.css') }}">
 </head>
+
+<nav style="display: flex; justify-content: space-between; align-items: center; padding: 15px 30px; background: #412212;; color: white;">
+    <div style="font-size: 22px; font-weight: bold; font-family: 'Poppins', sans-serif;">HorizonStay</div>
+    <ul style="list-style: none; padding: 0; margin: 0; display: flex;">
+        <li style="margin: 0 15px;"><a href="{{ url_for('hotels.view_hotels') }}" style="text-decoration: none; color: white; font-size: 16px; font-weight: 500; transition: 0.3s;">Home</a></li>
+        <li style="margin: 0 15px;"><a href="{{ url_for('hotels.vhotels') }}" style="text-decoration: none; color: white; font-size: 16px; font-weight: 500; transition: 0.3s;">View Hotels</a></li>
+        {% if current_user.is_authenticated %}
+            <li style="margin: 0 15px;"><a href="{{ url_for('bookings.my_bookings') }}" style="text-decoration: none; color: white; font-size: 16px; font-weight: 500; transition: 0.3s;">View Bookings</a></li>
+            <li style="margin: 0 15px;"><a href="{{ url_for('auth.logout') }}" style="text-decoration: none; color: white; font-size: 16px; font-weight: 500; transition: 0.3s;">Logout</a></li>
+        {% else %}
+            <li style="margin: 0 15px;"><a href="{{ url_for('auth.login') }}" style="text-decoration: none; color: white; font-size: 16px; font-weight: 500; transition: 0.3s;">Login</a></li>
+        {% endif %}
+    </ul>
+</nav>
 <body>
-    <h1>Booking Confirmed</h1>
-    <p>Name: {{ booking.name }}</p>
-    <p>Email: {{ booking.email }}</p>
-    <p>Check-in: {{ booking.checkin }}</p>
-    <p>Check-out: {{ booking.checkout }}</p>
-    <p>Hotel ID: {{ booking.hotel_id }}</p>
+    <div class="bookings-container">
+        <h2>Your Bookings</h2>
+        {% if bookings %}
+            <div class="bookings-list">
+                {% for booking in bookings %}
+                    <div class="booking-card">
+                        <h3>{{ booking.hotel.name }}</h3>
+                        <p><strong>Location:</strong> {{ booking.hotel.location }}</p>
+                        <p><strong>Check-in:</strong> {{ booking.checkin }}</p>
+                        <p><strong>Check-out:</strong> {{ booking.checkout }}</p>
+                        <p><strong>Booked on:</strong> {{ booking.name }}</p>
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <p>You have no bookings yet.</p>
+        {% endif %}
+    </div>
 </body>
+
 </html>

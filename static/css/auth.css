@@ -1,0 +1,108 @@
+body {
+    font-family: Arial, sans-serif;
+    background: url('../images/login.avif') no-repeat center center/cover; /* Adjust the path as needed */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    position: relative;
+}
+
+body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3); /* Adds slight transparency */
+}
+
+.auth-container {
+    width: 30%;
+    padding: 25px;
+    background: rgba(255, 255, 255, 0.9); /* Semi-transparent white */
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    text-align: center;
+    transition: 0.3s ease-in-out;
+    position: relative; /* Ensure it appears above the overlay */
+    z-index: 1;
+}
+.auth-container:hover {
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+.auth-container h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #333;
+    font-weight: 600;
+}
+
+.auth-container input,
+.auth-container select {
+    width: 100%;
+    padding: 12px;
+    margin: 12px 0;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: 0.3s;
+    box-sizing: border-box; /* Fix padding issue */
+}
+
+.auth-container input:focus,
+.auth-container select:focus {
+    border-color:#21130d;
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.3);
+    outline: none;
+}
+
+.auth-container select {
+    appearance: none; /* Remove default browser styling */
+    background: white;
+    cursor: pointer;
+}
+
+/* Fix select box padding issue */
+.auth-container select {
+    width: 100%; 
+    padding: 12px;
+}
+
+.auth-container .btn {
+    width: 100%;
+    background:#562412; 
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.auth-container .btn:hover {
+    background:#21130d;
+}
+
+.auth-container .btn:active {
+    transform: scale(0.98);
+}
+
+.auth-container p {
+    margin-top: 15px;
+    font-size: 14px;
+}
+
+.auth-container a {
+    color: #21130d;
+    text-decoration: none;
+}
+
+.auth-container a:hover {
+    text-decoration: underline;
+}
