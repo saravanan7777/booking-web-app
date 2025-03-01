@@ -1,12 +1,11 @@
 from flask import Flask, render_template
 from extensions import db, bcrypt, login_manager
-import os
 
 app = Flask(__name__)
 
-app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('SQLALCHEMY_DATABASE_URI')
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:saro%402003@localhost:5432/booking'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-app.config['SECRET_KEY'] = os.getenv('SECRET_KEY', 'your_secret_key')
+app.config['SECRET_KEY'] = 'your_secret_key'
 
 # Initialize extensions
 db.init_app(app)
@@ -28,7 +27,9 @@ app.register_blueprint(bookings, url_prefix='/bookings')
 with app.app_context():
     db.create_all()
 
-
+@app.route('/')
+def index():
+    return render_template('index.html')
 
 if __name__ == "__main__":
     app.run(debug=True)
